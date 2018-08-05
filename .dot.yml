@@ -5,7 +5,9 @@ role:
       # Or https://rpm.nodesource.com/setup_10.x
       os: ["centos"]
   pkg:
-    - name: nodejs npm
+    - name: nodejs
+      os: ["!darwin"]
+    - name: npm
       os: ["!darwin"]
     - name: node
       os: ["darwin"]
