@@ -1,6 +1,20 @@
 ---
 role:
   pkg:
-    - node
+    - name: nodejs npm
+      os: ["!darwin"]
+    - name: node
+      os: ["darwin"]
+    # - yarn
+  link:
+    - .bowerrc
+    # - .tern-project
+  # template:
+  #   - .npmrc.tpl
+  #   # vars:
+  #     # npm_user
+  #     # npm_email
+  #     # npm_prefix
   post_install:
     - node --version
+    - npm --version
