@@ -1,11 +1,12 @@
 ---
 role:
-  env:
-    NODE_VERSION: 8 # 10
+  # env:
+  #   NODE_VERSION: 8 # 10
   install:
-    - command: curl -sSL https://rpm.nodesource.com/setup_{{expand "NODE_VERSION"}}.x | sudo bash -
+    # https://nodejs.org/en/download/package-manager
+    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
       os: ["centos"]
-    - command: curl -sSL https://deb.nodesource.com/setup_{{expand "NODE_VERSION"}}.x | sudo -E bash -
+    - command: curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       os: ["debian"]
   pkg:
     - name: nodejs
