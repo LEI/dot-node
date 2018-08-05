@@ -1,9 +1,12 @@
 ---
 role:
+  env:
+    NODE_VERSION: 8 # 10
   install:
-    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
-      # Or https://rpm.nodesource.com/setup_10.x
+    - command: curl -sSL https://rpm.nodesource.com/setup_{{expand "NODE_VERSION"}}.x | sudo bash -
       os: ["centos"]
+    - command: curl -sSL https://deb.nodesource.com/setup_{{expand "NODE_VERSION"}}.x | sudo -E bash -
+      os: ["debian"]
   pkg:
     - name: nodejs
       os: ["!darwin"]
