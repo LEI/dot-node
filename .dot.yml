@@ -1,7 +1,7 @@
 ---
 role:
   install:
-    - command: curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
       # Or https://rpm.nodesource.com/setup_10.x
       os: ["centos"]
   pkg:
