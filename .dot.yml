@@ -1,14 +1,7 @@
 ---
 role:
-  # env:
-  #   NODE_VERSION: 8 # 10
-  install:
-    # https://nodejs.org/en/download/package-manager
-    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
-      os: ["centos"]
-    - command: curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-      os: ["debian"]
   pkg:
+    - curl
     - name: nodejs
       os: ["!darwin"]
     - name: npm
@@ -25,6 +18,14 @@ role:
   #     # npm_user
   #     # npm_email
   #     # npm_prefix
+  # env:
+  #   NODE_VERSION: 8 # 10
+  install:
+    # https://nodejs.org/en/download/package-manager
+    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
+      os: ["centos"]
+    - command: curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+      os: ["debian"]
   post_install:
     - node --version
     - npm --version
