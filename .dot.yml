@@ -1,7 +1,10 @@
 ---
 role:
   pkg:
-    - curl
+    - name: curl
+      os: ["debian"]
+    - name: gpg
+      os: ["debian"]
     - name: nodejs
       os: ["!darwin"]
     - name: npm
