@@ -1,0 +1,6 @@
+---
+role:
+  pkg:
+    - node
+  post_install:
+    - node --version
