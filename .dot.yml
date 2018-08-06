@@ -2,8 +2,8 @@
 role:
   install:
     # https://nodejs.org/en/download/package-manager
-    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
-      os: ["centos"]
+    # - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
+    #   os: ["centos"]
     - command: |
         sudo apt-get install -qqy curl gnupg;
         curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
