@@ -1,9 +1,18 @@
 ---
 role:
+  install:
+    # https://nodejs.org/en/download/package-manager
+    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
+      os: ["centos"]
+    - command: |
+        sudo apt-get install -qqy curl gnupg;
+        curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+      #curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+      #sudo apt-get update && sudo apt-get install yarn
+      os: ["debian"]
   pkg:
-    - name: nodejs
-      os: ["!darwin"]
-    - name: npm
+    - name: nodejs npm
       os: ["!darwin"]
     - name: node
       os: ["darwin"]
@@ -19,17 +28,6 @@ role:
   #     # npm_prefix
   # env:
   #   NODE_VERSION: 8 # 10
-  install:
-    # https://nodejs.org/en/download/package-manager
-    - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
-      os: ["centos"]
-    - command: |
-        sudo apt-get install -qqy curl gnupg;
-        curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-      #curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-      #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-      #sudo apt-get update && sudo apt-get install yarn
-      os: ["debian"]
   post_install:
     - node --version
     - npm --version
