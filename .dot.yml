@@ -13,9 +13,7 @@ role:
   pkg:
     - name: node
       os: ["darwin"]
-    - name: nodejs
-      os: ["!darwin"]
-    - name: npm
+    - name: ["nodejs", "npm"]
       os: ["!darwin"]
     # - yarn
   link:
