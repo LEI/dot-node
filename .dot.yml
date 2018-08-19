@@ -11,10 +11,12 @@ role:
       #sudo apt-get update && sudo apt-get install yarn
       os: ["debian"]
   pkg:
-    - name: nodejs npm
-      os: ["!darwin"]
     - name: node
       os: ["darwin"]
+    - name: nodejs
+      os: ["!darwin"]
+    - name: npm
+      os: ["!darwin"]
     # - yarn
   link:
     - .bowerrc
