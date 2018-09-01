@@ -1,13 +1,13 @@
 ---
 role:
   env:
-    NODE_VERSION: 8 # 10
+    # NODE_VERSION: 10
     NPM_CONFIG_PREFIX: ~/.node_modules
   install:
     # https://nodejs.org/en/download/package-manager
     # - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
     #   os: ["centos"]
-    - command: curl -sSL https://deb.nodesource.com/setup_$NODE_VERSION.x | sudo -E bash -
+    - command: curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       # sudo apt-get install -qqy curl gnupg
       #curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
       #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -36,7 +36,9 @@ role:
     - node --version
     - npm --version
     - npm prefix --global
-    - command: npm config set prefix "$NPM_CONFIG_PREFIX"
+    - command: |
+        echo "Setting npm config prefix to $NPM_CONFIG_PREFIX"
+        npm config set prefix "$NPM_CONFIG_PREFIX"
       if: 'p="$(npm prefix --global)"; [ -z "$p" ] || [ "$p" = "/usr" ]'
       os: ["archlinux"] # debian
 
