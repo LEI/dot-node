@@ -32,3 +32,12 @@ role:
   post_install:
     - node --version
     - npm --version
+    - npm prefix --global
+    - command: |
+        if [ -z "$(npm prefix --global)" ]; then
+          mkdir ~/.node_modules
+          npm config set prefix '~/.node_modules'
+        fi
+      os: ["debian"]
+      # if: test -z "..."
+
