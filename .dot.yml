@@ -28,16 +28,17 @@ role:
   #     # npm_email
   #     # npm_prefix
   # env:
-  #   NODE_VERSION: 8 # 10
+    NODE_VERSION: 8 # 10
+    NPM_CONFIG_PREFIX: ~/.node_modules
   post_install:
     - node --version
     - npm --version
-    - npm prefix --global
     - command: |
+        npm prefix --global
         if [ -z "$(npm prefix --global)" ]; then
-          mkdir ~/.node_modules
-          npm config set prefix '~/.node_modules'
+          mkdir "$NPM_CONFIG_PREFIX"
+          npm config set prefix "$NPM_CONFIG_PREFIX"
         fi
-      os: ["debian"]
+      # os: ["debian"]
       # if: test -z "..."
 
