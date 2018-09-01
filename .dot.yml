@@ -30,15 +30,13 @@ role:
   #     # npm_user
   #     # npm_email
   #     # npm_prefix
+  dir:
+    - .node_modules # npm_config_prefix
   post_install:
     - node --version
     - npm --version
-    - command: |
-        npm prefix --global
-        if [ -z "$(npm prefix --global)" ]; then
-          mkdir "$NPM_CONFIG_PREFIX"
-          npm config set prefix "$NPM_CONFIG_PREFIX"
-        fi
-      # os: ["debian"]
-      # if: test -z "..."
+    - npm prefix --global
+    - command: npm config set prefix "$NPM_CONFIG_PREFIX"
+      if: 'p="$(npm prefix --global)"; [ -z "$p" ] || [ "$p" = "/usr" ]'
+      os: ["archlinux"] # debian
 
