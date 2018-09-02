@@ -41,4 +41,4 @@ role:
         echo "Setting npm config prefix to $NPM_CONFIG_PREFIX"
         npm config set prefix "$NPM_CONFIG_PREFIX"
       if: 'p="$(npm prefix --global)"; [ -z "$p" ] || [ "$p" = "/usr" ]'
-      os: ["alpine", "archlinux"] # , "debian"]
+      os: linux # ["alpine", "archlinux", "debian"]
