@@ -35,8 +35,8 @@ role:
   post_install:
     - node --version
     - npm --version
-    - npm prefix --global
-    - npm config get registry
+    # - npm prefix --global
+    # - npm config get registry
     # https://docs.npmjs.com/getting-started/fixing-npm-permissions
     - command: |
         if [ -z "$NPM_CONFIG_PREFIX" ]; then
