@@ -37,7 +37,12 @@ role:
     - npm --version
     - npm prefix --global
     - npm config get registry
+    # https://docs.npmjs.com/getting-started/fixing-npm-permissions
     - command: |
+        if [ -z "$NPM_CONFIG_PREFIX" ]; then
+          echo "NPM_CONFIG_PREFIX is undefined"
+          exit 1
+        fi
         echo "Setting npm config prefix to $NPM_CONFIG_PREFIX"
         npm config set prefix "$NPM_CONFIG_PREFIX"
       if: 'p="$(npm prefix --global)"; [ -z "$p" ] || [ "$p" = "/usr" ]'
