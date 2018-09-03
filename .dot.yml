@@ -1,11 +1,14 @@
 ---
 role:
+  env:
+    # NODE_VERSION: 10
+    NPM_CONFIG_PREFIX: ~/.node_modules
   install:
     # https://nodejs.org/en/download/package-manager
     # - command: curl -sSL https://rpm.nodesource.com/setup_8.x | sudo bash -
     #   os: ["centos"]
+    # Requires curl and gnupg:
     - command: curl -sSL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-      # sudo apt-get install -qqy curl gnupg
       #curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
       #echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
       #sudo apt-get update && sudo apt-get install yarn
@@ -27,8 +30,20 @@ role:
   #     # npm_user
   #     # npm_email
   #     # npm_prefix
-  # env:
-  #   NODE_VERSION: 8 # 10
+  dir:
+    - .node_modules # npm_config_prefix
   post_install:
     - node --version
     - npm --version
+    # - npm prefix --global
+    # - npm config get registry
+    # https://docs.npmjs.com/getting-started/fixing-npm-permissions
+    - command: |
+        if [ -z "$NPM_CONFIG_PREFIX" ]; then
+          echo "NPM_CONFIG_PREFIX is undefined"
+          exit 1
+        fi
+        echo "Setting npm config prefix to $NPM_CONFIG_PREFIX"
+        npm config set prefix "$NPM_CONFIG_PREFIX"
+      if: 'p="$(npm prefix --global)"; [ -z "$p" ] || [ "$p" = "/usr" ]'
+      os: linux # ["alpine", "archlinux", "debian"]
