@@ -18,9 +18,9 @@ role:
     - name: node
       os: ["darwin"]
     - name: ["nodejs", "npm"]
-      os: ["!android", "!darwin", "!debian8"]
+      os: ["!android", "!darwin", "!jessie"]
     - name: nodejs
-      os: ["android", "debian8"]
+      os: ["android", "jessie"]
     # - yarn
   link:
     - .bowerrc
