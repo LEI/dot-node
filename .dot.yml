@@ -34,8 +34,12 @@ role:
   dir:
     - .node_modules # npm_config_prefix
   post_install:
-    - node --version
-    - npm --version
+    # FIXME: fails for non-default node version with brew (PATH)
+    # $(brew --cellar node) -> /usr/local/Cellar/node
+    # how to find '/usr/local/opt/node@8/bin/node'?
+    # - node --version
+    # - npm --version
+
     # - npm prefix --global
     # - npm config get registry
     # https://docs.npmjs.com/getting-started/fixing-npm-permissions
