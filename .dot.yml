@@ -15,13 +15,13 @@ role:
       if: '[ "$DOT_PKG" -eq 1 ]'
       os: ["debian"]
   pkg:
-    - name: node
+    - name: node # nvm, n
       os: ["darwin"]
     - name: ["nodejs", "npm"]
       os: ["!android", "!darwin", "!jessie", "!ubuntu"]
     - name: nodejs
       os: ["android", "jessie", "ubuntu"]
-    # - yarn
+    # - yarn --without-node
   link:
     - .bowerrc
     # - .tern-project
