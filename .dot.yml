@@ -13,10 +13,7 @@ role:
       # echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
       # sudo apt-get update && sudo apt-get install yarn
       if: '[ "$DOT_PKG" -eq 1 ]'
-      os: ["debian9"]
-    - command: curl -sSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
-      if: '[ "$DOT_PKG" -eq 1 ]'
-      os: ["debian", "!debian9"]
+      os: ["debian"]
   pkg:
     - name: node # nvm, n
       os: ["darwin"]
